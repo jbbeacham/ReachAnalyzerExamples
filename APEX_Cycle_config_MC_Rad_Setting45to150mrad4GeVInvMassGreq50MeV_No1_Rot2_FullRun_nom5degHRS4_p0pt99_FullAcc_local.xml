@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE JobConfiguration PUBLIC "" "JobConfig.dtd">
+
+<JobConfiguration JobName="APEX_CycleJob" OutputLevel="INFO">
+
+  <Library Name="libCintex"/>
+  <Library Name="libSFrameCintex"/>
+  <Library Name="libRooFit" />
+
+  <Library Name="libAPEX"/>
+
+  <Package Name="SFrameCore.par"/>
+  <Package Name="SFramePlugIns.par"/>
+  <Package Name="SFrameCintex.par"/>
+
+  <Package Name="APEX.par"/>
+
+  <Cycle Name="APEX_Cycle" OutputDirectory="./results/" PostFix=""
+         RunMode="LOCAL" ProofServer="lite://"
+         ProofWorkDir=""
+         TargetLumi="1.0">
+
+     <InputData Lumi="1.0" NEventsMax="-1" Type="MC"
+                Version="Rad_Setting45to150mrad4GeVInvMassGreq50MeV_No1_Rot2_FullRun_nom5degHRS4_p0pt99_FullAcc">
+
+       <In FileName="/Users/jbbeacham/APEX/MC/APEX1/ROOT_Files/Rad_Setting45to150mrad4GeVInvMassGreq50MeV_No1_Rot2_FullRun_nom5degHRS4_p0pt99.root" Lumi="1"/>
+
+       <InputTree Name="physics" />
+       <OutputTree Name="invmass" />
+
+     </InputData>
+
+     <UserConfig>
+       <Item Name="TreeName" Value="physics"/>
+       <Item Name="RunConfig" Value="APEX1"/>
+       <Item Name="AccMapDir" Value="/Users/jbbeacham/APEX/ReachAnalyzer/APEX/AcceptanceMap/Graphs/"/>
+     </UserConfig>
+
+  </Cycle>
+
+</JobConfiguration>
